@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  get 'posts/index'
   get '/' => 'home#top'
   get 'about' => 'home#about'
-
-
+  get'posts/index'=>'posts#index'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
