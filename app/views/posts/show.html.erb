@@ -1,3 +1,5 @@
+
+
 <div class="main posts-show">
   <div class="container">
     <div class="posts-show-item">
@@ -11,8 +13,20 @@
         <div class="post-time">
             <%= @post.created_at%>
         </div>
-        <div class="post-menus">    
-          <% if @post.user_id == @current_user.id %>
+        
+        <%= @post.id %>
+        <%=@user.id%>
+        
+        <% if Like.find_by(user_id: @current_user.id, post_id: @post.id)%>
+          <%= button_to('いいね解除', "/likes/#{@post.id}/destroy", {method: "post"} ) %>
+        <% else%>
+          <%= button_to('いいね', "/likes/#{@post.id}/create", {method: "post"} ) %>
+        <% end%>
+
+        <%= @likes_count %>
+        
+        <% if @post.user_id == @current_user.id %>
+          <div class="post-menus">    
             <%= link_to("編集","/posts/#{@post.id}/edit") %> 
             <%= button_to("削除","/posts/#{@post.id}/destroy", {method:"post"}) %> 
           <% end%>
