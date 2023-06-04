@@ -7,6 +7,16 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def followings
+    user =User.find(params[:id])
+    @users =user.followings
+  end
+
+  def followers
+    user =User.find(params[:id])
+    @users =user.followers
+  end
+
   def show
     @user=User.find_by(id:params[:id])
   end
@@ -86,7 +96,7 @@ class UsersController < ApplicationController
 
   def likes
     @user=User.find_by(id: params[:id])
-    @like=Like.where(user_id: @user.id)
+    @likes=Like.where(user_id: @user.id)
   end
 
   def ensure_correct_user
