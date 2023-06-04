@@ -35,6 +35,8 @@
     cursor: pointer;
   }
   
+
+
   /* 共通レイアウト ================================ */
   body {
     color: #2d3133;
@@ -50,6 +52,18 @@
     height: auto;
     min-height: 100%;
     background-color: #f5f8fa;
+  }
+  .follow-list{
+    display: flex;
+    justify-content: center;
+
+    top: 64px;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    background-color: #f5f8fa;
+
+
   }
   
   .container {
@@ -75,6 +89,10 @@
     font-size: 22px;
     line-height: 64px;
   }
+
+
+
+  
   
   .header-logo a{
     color: white;

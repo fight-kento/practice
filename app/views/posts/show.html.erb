@@ -14,22 +14,19 @@
             </div>
         </p>
         <div class="post-time">
-            <%= @post.created_at%>
+            <%= @post.created_at.strftime('%Y年%m月%d日 %H:%M')%>
         </div>
-        
-        <%= @post.id %>
-        <%=@user.id%>
 
         <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
-          <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
+          <%= link_to("/likes/#{@post.id}/destroy", data: { "turbo-method": :post },allow_other_host: true) do %>
             <span class="fa fa-heart liked-btn"></span>
           <% end %>
         <% else %>
-          <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+          <%= link_to("/likes/#{@post.id}/create", data: { "turbo-method": :post },allow_other_host: true) do %>
             <span class="fa fa-heart unliked-btn"></span>
           <% end %>
         <% end %>
-
+        
         <%= @likes_count %>
         
         <% if @post.user_id == @current_user.id %>
